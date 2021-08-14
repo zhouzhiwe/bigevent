@@ -19,13 +19,14 @@ $(function() {
     $("#reg-form").on("submit", function(e) {
         e.preventDefault()
         var data = {
-            username: $('#reg-box [name="username"]').val(),
-            password: $('#reg-box [name="password"]').val(),
-            repassword: $('#reg-box [name="repassword"]').val()
-        }
-        $.post("/api/reg", data, function(res) {
-            console.log(res);
+            username: $("#reg-form [name=username]").val(),
+            password: $("#reg-form [name=password]").val(),
+            repassword: $("#reg-form [name=repassword]").val()
+        };
+        // console.log(data);
 
+        $.post("/api/reg", data, function(res) {
+            // console.log(res);
             if (res.code !== 0) {
                 return layer.msg(res.message)
             }
@@ -41,7 +42,6 @@ $(function() {
             data: $(this).serialize(),
             success: function(res) {
                 // console.log(res);
-
                 if (res.code !== 0) {
                     return layer.msg("登录失败")
                 }
