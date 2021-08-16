@@ -36,12 +36,13 @@ $(function() {
     })
     $("#login-form").submit(function(e) {
         e.preventDefault()
+            // console.log(111);
         $.ajax({
-            method: "POST",
             url: "/api/login",
+            method: "POST",
             data: $(this).serialize(),
             success: function(res) {
-                // console.log(res);
+                console.log(res);
                 if (res.code !== 0) {
                     return layer.msg("登录失败")
                 }
@@ -52,4 +53,5 @@ $(function() {
             }
         })
     })
+
 })

@@ -21,11 +21,11 @@ function getUserinfo() {
     $.ajax({
         method: "GET",
         url: "/my/userinfo",
-        headers: {
-            Authorization: localStorage.getItem('token') || ''
-        },
+        // headers: {
+        //     Authorization: localStorage.getItem('token') || ''
+        // },
         success: function(res) {
-            console.log(res);
+            // console.log(res);
             if (res.code !== 0) {
                 return layui.layer.msg("获取用户信息失败！")
             }
@@ -36,9 +36,9 @@ function getUserinfo() {
 
 function renderAvatar(user) {
     // console.log(111);
-    console.log(user);
+    // console.log(user);
     var name = user.nickname || user.username
-    $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
+    $('.welcome').html('欢迎&nbsp;&nbsp;' + name)
     if (user.user_pic !== null) {
         $('.layui-nav-img').attr('src', user.user_pic).show()
         $('.text-avatar').hide()
